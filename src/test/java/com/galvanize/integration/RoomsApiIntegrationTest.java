@@ -15,13 +15,11 @@ import org.springframework.boot.test.WebIntegrationTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.util.Assert;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.core.IsNull.notNullValue;
@@ -135,5 +133,14 @@ public class RoomsApiIntegrationTest {
     } catch(IOException e) {
       // no op, test will fail
     }
+  }
+
+  @Test
+  public void getRoomsReturnsAListOfAllRooms() {
+//    ResponseEntity<Object[]> response = restTemplate.getForEntity(BASE_URL, Object[].class, Collections.EMPTY_MAP);
+    ResponseEntity<ArrayList> response = restTemplate.getForEntity(BASE_URL, ArrayList.class, Collections.EMPTY_MAP);
+
+    System.out.println("==>"+response.toString());
+    Assert.notNull(response);
   }
 }

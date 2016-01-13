@@ -1,8 +1,82 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.galvanize.integration.RoomsApiIntegrationTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2016-01-13T12:30:15" hostname="compozed-ani-12" time="1182.956">
-  <properties/>
-  <testcase name="getRoomsReturnsAListOfAllRooms" classname="com.galvanize.integration.RoomsApiIntegrationTest" time="1182.956">
-    <failure message="org.springframework.http.converter.HttpMessageNotReadableException: Could not read document: Can not deserialize instance of java.util.ArrayList out of START_OBJECT token&#10; at [Source: java.io.PushbackInputStream@5cdd1ca5; line: 1, column: 1]; nested exception is com.fasterxml.jackson.databind.JsonMappingException: Can not deserialize instance of java.util.ArrayList out of START_OBJECT token&#10; at [Source: java.io.PushbackInputStream@5cdd1ca5; line: 1, column: 1]" type="org.springframework.http.converter.HttpMessageNotReadableException">org.springframework.http.converter.HttpMessageNotReadableException: Could not read document: Can not deserialize instance of java.util.ArrayList out of START_OBJECT token
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Class com.galvanize.integration.RoomsApiIntegrationTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Class com.galvanize.integration.RoomsApiIntegrationTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/com.galvanize.integration.html">com.galvanize.integration</a> &gt; RoomsApiIntegrationTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">1</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">1</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">19m42.96s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox failures" id="successRate">
+<div class="percent">0%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Failed tests</a>
+</li>
+<li>
+<a href="#tab1">Tests</a>
+</li>
+<li>
+<a href="#tab2">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Failed tests</h2>
+<div class="test">
+<a name="getRoomsReturnsAListOfAllRooms"></a>
+<h3 class="failures">getRoomsReturnsAListOfAllRooms</h3>
+<span class="code">
+<pre>org.springframework.http.converter.HttpMessageNotReadableException: Could not read document: Can not deserialize instance of java.util.ArrayList out of START_OBJECT token
  at [Source: java.io.PushbackInputStream@5cdd1ca5; line: 1, column: 1]; nested exception is com.fasterxml.jackson.databind.JsonMappingException: Can not deserialize instance of java.util.ArrayList out of START_OBJECT token
  at [Source: java.io.PushbackInputStream@5cdd1ca5; line: 1, column: 1]
 	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.readJavaType(AbstractJackson2HttpMessageConverter.java:224)
@@ -78,9 +152,31 @@ Caused by: com.fasterxml.jackson.databind.JsonMappingException: Can not deserial
 	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:2810)
 	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.readJavaType(AbstractJackson2HttpMessageConverter.java:221)
 	... 59 more
-</failure>
-  </testcase>
-  <system-out><![CDATA[12:30:12.174 [Test worker] DEBUG o.s.t.c.j.SpringJUnit4ClassRunner - SpringJUnit4ClassRunner constructor called with [class com.galvanize.integration.RoomsApiIntegrationTest]
+</pre>
+</span>
+</div>
+</div>
+<div id="tab1" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="failures">getRoomsReturnsAListOfAllRooms</td>
+<td>19m42.96s</td>
+<td class="failures">failed</td>
+</tr>
+</table>
+</div>
+<div id="tab2" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>12:30:12.174 [Test worker] DEBUG o.s.t.c.j.SpringJUnit4ClassRunner - SpringJUnit4ClassRunner constructor called with [class com.galvanize.integration.RoomsApiIntegrationTest]
 12:30:12.178 [Test worker] DEBUG o.s.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
 12:30:12.196 [Test worker] DEBUG o.s.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
 12:30:12.212 [Test worker] DEBUG o.s.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.galvanize.integration.RoomsApiIntegrationTest] from class [org.springframework.boot.test.WebAppIntegrationTestContextBootstrapper]
@@ -131,9 +227,9 @@ Caused by: com.fasterxml.jackson.databind.JsonMappingException: Can not deserial
 2016-01-13 12:30:14.588  INFO 13530 --- [ost-startStop-1] o.s.b.c.embedded.FilterRegistrationBean  : Mapping filter: 'httpPutFormContentFilter' to: [/*]
 2016-01-13 12:30:14.589  INFO 13530 --- [ost-startStop-1] o.s.b.c.embedded.FilterRegistrationBean  : Mapping filter: 'requestContextFilter' to: [/*]
 2016-01-13 12:30:15.044  INFO 13530 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@129ec020: startup date [Wed Jan 13 12:30:12 GMT 2016]; root of context hierarchy
-2016-01-13 12:30:15.096  INFO 13530 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/rooms],methods=[POST]}" onto public com.galvanize.models.Room com.galvanize.controllers.RoomsController.createRoom(com.galvanize.models.Room)
-2016-01-13 12:30:15.098  INFO 13530 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
-2016-01-13 12:30:15.099  INFO 13530 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2016-01-13 12:30:15.096  INFO 13530 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/rooms],methods=[POST]}&quot; onto public com.galvanize.models.Room com.galvanize.controllers.RoomsController.createRoom(com.galvanize.models.Room)
+2016-01-13 12:30:15.098  INFO 13530 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/error]}&quot; onto public org.springframework.http.ResponseEntity&lt;java.util.Map&lt;java.lang.String, java.lang.Object&gt;&gt; org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2016-01-13 12:30:15.099  INFO 13530 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/error],produces=[text/html]}&quot; onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
 2016-01-13 12:30:15.122  INFO 13530 --- [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
 2016-01-13 12:30:15.122  INFO 13530 --- [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
 2016-01-13 12:30:15.152  INFO 13530 --- [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
@@ -145,6 +241,19 @@ Caused by: com.fasterxml.jackson.databind.JsonMappingException: Can not deserial
 2016-01-13 12:30:31.485  WARN 13530 --- [nio-9000-exec-1] o.s.web.servlet.PageNotFound             : Request method 'GET' not supported
 2016-01-13 12:31:43.389  WARN 13530 --- [nio-9000-exec-3] o.s.web.servlet.PageNotFound             : Request method 'GET' not supported
 2016-01-13 12:49:58.357  WARN 13530 --- [nio-9000-exec-5] o.s.web.servlet.PageNotFound             : Request method 'GET' not supported
-]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 2.5</a> at Jan 13, 2016 12:49:58 PM</p>
+</div>
+</div>
+</body>
+</html>

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.galvanize.models.RoomTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2016-01-12T12:37:23" hostname="Andreass-MBP.local" time="0.017">
-  <properties/>
-  <testcase name="ensureNameIsNotBlank" classname="com.galvanize.models.RoomTest" time="0.011"/>
-  <testcase name="ensureNameIsNotNull" classname="com.galvanize.models.RoomTest" time="0.006"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
