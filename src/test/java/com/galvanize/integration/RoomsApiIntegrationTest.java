@@ -4,8 +4,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.galvanize.Application;
 import com.galvanize.models.Room;
 import com.galvanize.repositories.RoomsRepository;
+import com.mongodb.util.JSON;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +21,10 @@ import org.springframework.util.Assert;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.core.IsNull.notNullValue;
@@ -136,11 +141,91 @@ public class RoomsApiIntegrationTest {
   }
 
   @Test
-  public void getRoomsReturnsAListOfAllRooms() {
-//    ResponseEntity<Object[]> response = restTemplate.getForEntity(BASE_URL, Object[].class, Collections.EMPTY_MAP);
+  public void getRoomsReturnsEmptyListWhenNoRoomsAdded() {
     ResponseEntity<ArrayList> response = restTemplate.getForEntity(BASE_URL, ArrayList.class, Collections.EMPTY_MAP);
-
-    System.out.println("==>"+response.toString());
     Assert.notNull(response);
+    assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
+    ArrayList roomlist = response.getBody();
+    assertThat(roomlist.size(), equalTo(0));
   }
+
+  @Test
+  public void getRoomsReturnsListWithOneRoomWhenOneRoomAdded() {
+    Room newRoom1 = new Room("room1", "campus1", 2, false);
+    roomsRepository.save(newRoom1);
+
+    ResponseEntity<ArrayList> response = restTemplate.getForEntity(BASE_URL, ArrayList.class, Collections.EMPTY_MAP);
+    Assert.notNull(response);
+    assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
+    ArrayList roomlist = response.getBody();
+    assertThat(roomlist.size(), equalTo(1));
+  }
+
+  @Test
+  public void getRoomsReturnsAListOfAllRooms() {
+    Room newRoom1 = new Room("room1", "campus1", 2, false);
+    Room newRoom2 = new Room("room2", "campus2", 3, true);
+    Room newRoom3 = new Room("room3", "campus3", 4, false);
+    roomsRepository.save(newRoom1);
+    roomsRepository.save(newRoom2);
+    roomsRepository.save(newRoom3);
+
+    ResponseEntity<ArrayList> response = restTemplate.getForEntity(BASE_URL, ArrayList.class, Collections.EMPTY_MAP);
+    Assert.notNull(response);
+    assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
+    ArrayList roomlist = response.getBody();
+    assertThat(roomlist.size(), equalTo(3));
+  }
+
+  @Test
+  public void getRoomReturnsJSONRoomDetailsForRequestedRoomId() {
+    String id = "roomId";
+    Room createdRoom = new Room(id, "campus1", 2, false);
+    roomsRepository.save(createdRoom);
+    ResponseEntity<String> response = restTemplate.getForEntity(BASE_URL+"/"+createdRoom.getId(), String.class, Collections.EMPTY_MAP);
+    Assert.notNull(response);
+    assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
+    String roomResponse = response.getBody();
+    Assert.notNull(roomResponse);
+//    assertThat(roomResponse instanceOf JSON  );
+    Object obj=null;
+    //TODO figure out good way to do this:
+    try {
+      obj = JSON.parse(response.getBody());
+    } catch (Exception ex) {
+//      AssertFalse
+//      System.out.println("===>test case failed");
+    }
+    Assert.notNull(obj);
+  }
+
+  @Test
+  public void getRoomReturns404WhenRoomNotFound() {
+    String id = "roomId";
+    Room createdRoom = new Room(id, "campus1", 2, false);
+    roomsRepository.save(createdRoom);
+    ResponseEntity<String> response = restTemplate.getForEntity(BASE_URL+"/badid", String.class, Collections.EMPTY_MAP);
+    Assert.notNull(response);
+    assertThat(response.getStatusCode(), equalTo(HttpStatus.NOT_FOUND));
+    System.out.println(response.getBody());
+  }
+
+
+  @Ignore
+  @Test
+  public void getRoomReturnsRoomDetailsForRequestedRoomId() {
+    String id = "roomId";
+    Room createdRoom = new Room(id, "campus1", 2, false);
+    roomsRepository.save(createdRoom);
+    ResponseEntity<Room> response = restTemplate.getForEntity(BASE_URL+"/"+createdRoom.getId(), Room.class, Collections.EMPTY_MAP);
+    Assert.notNull(response);
+    assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
+    Room roomResponse = response.getBody();
+    Assert.notNull(roomResponse);
+    assertThat(roomResponse.getId(), equalTo(createdRoom.getId()));
+    assertThat(roomResponse.getCampusName(), equalTo(createdRoom.getCampusName()));
+    assertThat(roomResponse.getCapacity(), equalTo(createdRoom.getCapacity()));
+    assertThat(roomResponse.getName(), equalTo(createdRoom.getName()));
+  }
+
 }
